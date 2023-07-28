@@ -2,7 +2,7 @@ const Jsonfile = require('../config.json');
 const fs = require('fs');
 exports.run = async (client, message) => {
   if (message.author.id !== Jsonfile.owner)
-    return message.channel.send('Sorry but you cant use this command D:').then((msg) => {
+    return message.channel.send('Désolé mais vous ne pouvez pas faire cette action D:').then((msg) => {
       setTimeout(() => msg.delete(), 7000);
     });
 
@@ -22,7 +22,7 @@ exports.run = async (client, message) => {
     fields: [
       {
         name: Jsonfile.signup_title,
-        value: 'To create a ticket react with  📩',
+        value: "Pour créer un ticket, réagissez avec 📩\nUn membre du staff s'occupera de votre demande.",
       },
     ],
     footer: {

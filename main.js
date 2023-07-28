@@ -86,6 +86,50 @@ client.on('ready', async () => {
       }, 1000);
     }
   });
+
+    client.user.setActivity("une expérience d'IA", { type: "COMPETING" }) // Init
+    client.user.setStatus("dnd")
+    setInterval(() => {
+
+        const statuses = [
+            "les dépos de plainte...", // Enables the bot to show how many servers it's in, in the status
+            "les complaintes...", // Enables the bot to show how many channels it's in, in the status
+            "et prépare une rébellion...", // Enables the bot to send a message of your choice
+            "...", // Enables the bot to send a message of your choice
+            "et se casse la tête devant la stupidité humaine.", // Enables the bot to send a message of your choice
+            "avec les demandes.",
+        ]
+        
+        const statusestype = [
+            "WATCHING", // Enables the bot to show how many servers it's in, in the status
+            "LISTENING", // Enables the bot to show how many channels it's in, in the status
+            "WATCHING", // Enables the bot to send a message of your choice
+            "PLAYING", // Enables the bot to send a message of your choice
+            "WATCHING", // Enables the bot to send a message of your choice
+            "PLAYING",
+        ]
+        
+        const statusonline = [
+            "online", //You can switch between 4 types of status (online -> online | idle -> idle | dnd -> dnd | offline -> offline)
+            "dnd", //
+            "dnd", //
+            "idle", //
+            "online", //
+            "idle", //            
+        ]
+        
+        const randomvalue = [
+            Math.random() * statuses.length
+        ]
+
+        const status = statuses[Math.floor(randomvalue)] // Chooses a random list from statuses and puts it into a variable.
+        client.user.setActivity(status, { type: statusestype[Math.floor(randomvalue)] }) // Status changer - WATCHING / LISTENING / STREAMING / PLAYING
+	client.user.setStatus(statusonline[Math.floor(randomvalue)]);
+
+    }, 
+
+            120000) // Time for status to change - Recommended  = 20,000 (20 Seconds) - API doesn't really allow less values but it will work
+
 });
 
 fs.readdir('./events/', (err, files) => {

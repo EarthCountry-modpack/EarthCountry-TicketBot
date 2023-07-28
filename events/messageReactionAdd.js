@@ -13,7 +13,7 @@ module.exports = (client, messageReaction, user) => {
       let channelname = `ticket-${user.username}`;
       channelname = channelname.replace(/\s/g, '-').toLowerCase();
       if (messageReaction.message.guild.channels.cache.find((channel) => channel.name === channelname) && config.one_app) {
-        user.send(`You already have an ongoing ticket.`).catch(console.error);
+        user.send(`Vous avez déjà un ticket ouvert.`).catch(console.error);
         return messageReaction.users.remove(user.id);
       }
       contining(client, messageReaction.message, user);
@@ -30,34 +30,34 @@ module.exports = (client, messageReaction, user) => {
       switch (messageReaction.emoji.name) {
         case '🔒':
           if (!checkUser(messageReaction.message, user) && !config.allow_user_lock) {
-            user.send('Only Staff can lock the channels');
+            user.send('Seul le staff peut bloquer les channels.');
             return messageReaction.users.remove(user.id);
           }
           if (channel.permissionOverwrites.cache.get(ownerID)?.deny.has('SEND_MESSAGES')) {
-            user.send('This channel is already locked');
+            user.send('Ce channel est déjà bloqué 🔒');
             return messageReaction.users.remove(user.id);
           }
           channel.permissionOverwrites.edit(owner, {
             SEND_MESSAGES: false,
           });
-          return messageReaction.message.channel.send('Channel Locked 🔒');
+          return messageReaction.message.channel.send('Channel bloqué 🔒');
         case '🔓':
           if (!checkUser(messageReaction.message, user) && !config.allow_user_unlock) {
-            user.send('Only Staff can unlock the channels');
+            user.send('Seul le staff peut débloquer les channels.');
             return messageReaction.users.remove(user.id);
           }
           if (channel.permissionOverwrites.cache.get(ownerID)?.allow.has('SEND_MESSAGES')) {
-            user.send('This channel is already unlocked');
+            user.send('Ce channel est déjà débloqué 🔓');
             return messageReaction.users.remove(user.id);
           }
           channel.permissionOverwrites.edit(owner, {
             SEND_MESSAGES: true,
           });
-          return messageReaction.message.channel.send('Channel Unlocked 🔓');
+          return messageReaction.message.channel.send('Channel débloqué 🔓');
         case '⛔':
           if (!messageReaction.message.guild.channels.cache.find((c) => c.name.toLowerCase() === channel.name)) return;
           if (!checkUser(messageReaction.message, user) && !config.allow_user_delete) {
-            user.send('Only Staff can delete the channels').catch(console.error);
+            user.send('Seul le staff peut supprimer les channels.').catch(console.error);
             return messageReaction.users.remove(user.id);
           }
 
@@ -66,7 +66,7 @@ module.exports = (client, messageReaction, user) => {
             removeTicketfromCollectors(messageReaction.message.id);
           }, 5000);
 
-          return messageReaction.message.channel.send('Deleting this channel in 5 seconds!');
+          return messageReaction.message.channel.send('Suppression du channel dans 5 secondes !');
       }
     });
   }

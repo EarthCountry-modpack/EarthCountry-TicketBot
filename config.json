@@ -1,16 +1,16 @@
 {
   "token": "(Enter Token here)",
-  "prefix": "(Enter Prefix Here)",
+  "prefix": "T!",
   "owner": "(Enter id of Bot Owner)",
   "Channelrole": ["(Enter id of Viewing Role)", "(You can add more if you want)"],
-  "signup_color": "(Enter Hex Code for signup Embed Here)",
-  "signup_title": "(Enter Title for signup Embed Here)",
-  "answer_title": "(Enter Title for Answer Embed Here)",
-  "answer_color": "(Enter Hex Code for Answer Embed Here)",
-  "answer_description": "(Enter Answer Embed Description) (Use \n for breaking lines!)",
+  "signup_color": "fffff",
+  "signup_title": "Réagissez au message pour ouvrir un ticket.",
+  "answer_title": "Vous avez ouvert un ticket.",
+  "answer_color": "ff777",
+  "answer_description": "Veuillez attendre l'arrivée d'un membre du staff.\nVous ne pouvez supprimer votre demande mais pouvez la bloquer.\nSi vous avez réglé votre problème, nous vous invitons à bloquez le ticket.",
   "answer_category": "(Enter id of Category for Tickets)",
   "allow_user_delete": false,
-  "allow_user_lock": false,
-  "allow_user_unlock": false,
-  "one_app": true
+  "allow_user_lock": true,
+  "allow_user_unlock": true,
+  "one_app": false
 }
